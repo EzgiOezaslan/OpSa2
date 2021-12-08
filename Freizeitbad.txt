@@ -1,0 +1,36 @@
+Daten des Freizeitbades
+Name des Freitzeitbads:				hellooo
+Oeffnungszeit des Freizeitbads:		9.0 - 12.0
+Beckenlaenge des Freizeitbads:		35
+Wassertemperatur des Freizeitbads:	27
+
+Daten des Freizeitbades
+Name des Freitzeitbads:				Bochum
+Oeffnungszeit des Freizeitbads:		8.0 - 18.0
+Beckenlaenge des Freizeitbads:		30
+Wassertemperatur des Freizeitbads:	25
+
+Daten des Freizeitbades
+Name des Freitzeitbads:				hi
+Oeffnungszeit des Freizeitbads:		7.0 - 18.0
+Beckenlaenge des Freizeitbads:		23
+Wassertemperatur des Freizeitbads:	26
+
+Daten des Freizeitbades
+Name des Freitzeitbads:				hi
+Oeffnungszeit des Freizeitbads:		12.0 - 18.0
+Beckenlaenge des Freizeitbads:		28
+Wassertemperatur des Freizeitbads:	24
+
+Daten des Freizeitbades
+Name des Freitzeitbads:				hallo
+Oeffnungszeit des Freizeitbads:		7.0 - 9.0
+Beckenlaenge des Freizeitbads:		34
+Wassertemperatur des Freizeitbads:	23
+
+Daten des Freizeitbades
+Name des Freitzeitbads:				Ezgi
+Oeffnungszeit des Freizeitbads:		8.0 - 18.0
+Beckenlaenge des Freizeitbads:		27
+Wassertemperatur des Freizeitbads:	24
+
