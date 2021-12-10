@@ -13,5 +13,5 @@ public class ConcreteObservable implements Observable{
 	public void notifyObservers() {
 		
 	}
-
+	
 }
