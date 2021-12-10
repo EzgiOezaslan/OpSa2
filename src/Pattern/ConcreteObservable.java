@@ -1,6 +1,5 @@
 package Pattern;
 
-
 public class ConcreteObservable implements Observable{
 	
 
