@@ -1,53 +1,18 @@
 package Pattern;
 
 
-import java.util.*;
-
 public class ConcreteObservable implements Observable{
 	
-	
-	//hier ArrayList erstellen
-		private List<Observer> observers = new ArrayList<>();
-		
-		@Override
-		public void addObserver(Observer obs){
-		
-			boolean add = false;
-			
-			if(observers.isEmpty() == false){
-				
-				
-				for (Observer o : observers){
-					
-					if(o.equals(obs)){
-						add = true;
-					}
-				}
-			}
-			
-			if(add == false){
 
-				this.observers.add(obs);
-			}	
-		}
+	public void addObserver(Observer obs) {
 		
-		@Override
-		public void removeObserver(Observer obs){
-			
-			for(Observer o : observers){
-				
-				if(o.equals(obs)){
-					int i = observers.indexOf(o);
-					observers.remove(i);
-				}
-			}
-		}
+	}
+	public void removeObserver(Observer obs) {
 		
-		@Override
-		public void notifyObservers(){
-			
-			for(Observer o : observers){
-				o.update();
-			}
-		}
+	}
+	public void notifyObservers() {
+		
+	}
+	
+
 }
