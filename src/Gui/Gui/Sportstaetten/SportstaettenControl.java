@@ -14,8 +14,11 @@ import javafx.stage.Stage;
 		public SportstaettenControl(Stage primaryStage) {
 			this.freizeitbaederModel = FreizeitbaederModel.getInstance();
 			this.sportstaettenView = new SportstaettenView( this, freizeitbaederModel, primaryStage);
+		
+			freizeitbaederModel.addObserver(this);
+			
 		}
-
+/*
 		void schreibeFreizeitbaederInDatei(String typ) {
 			try {
 				if ("csv".contentEquals(typ)) {
@@ -34,6 +37,7 @@ import javafx.stage.Stage;
 				sportstaettenView.zeigeFehlermeldungsfensterAn("Unbekannter Fehler beim Speichern",typ);
 			}
 		}
+*/
 
 		public void update() {
 			sportstaettenView.zeigeFreizeitbaederAn();
