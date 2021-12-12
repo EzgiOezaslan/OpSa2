@@ -2,26 +2,30 @@ package Business;
 
 
 import java.io.*;
+import java.util.Vector;
 
 import Creators.ConcreteTxtCreator;
 import Creators.WriterCreator;
 import Creators.WriterCsvCreator;
 import Creators.WriterProduct;
-import Pattern.ConcreteObservable;
+import Pattern.Observer;
+import Pattern.Observable;
 
-public class FreizeitbaederModel extends ConcreteObservable {
+public class FreizeitbaederModel implements Observable {
 	
 	private Freizeitbad freizeitbad;
+	private Vector <Observer> observers = new Vector <Observer>();
 
 	/*
-	 public void schreibeFreizeitbaederInCsvDatei(FreizeitbaederView fbView)
-	 throws IOException { BufferedWriter aus = new BufferedWriter(new
-	 FileWriter("Freizeitbaeder.csv", true));
-	 aus.write(fbView.getFreizeitbad().gibFreizeitbadZurueck(';')); aus.close(); }
+	 * public void schreibeFreizeitbaederInCsvDatei(FreizeitbaederView fbView)
+	 * throws IOException { BufferedWriter aus = new BufferedWriter(new
+	 * FileWriter("Freizeitbaeder.csv", true));
+	 * aus.write(fbView.getFreizeitbad().gibFreizeitbadZurueck(';')); aus.close(); }
 	 */
+	
 
 	//Singleton
-	private static FreizeitbaederModel freizeitbaederModel= null;
+	private static FreizeitbaederModel freizeitbaederModel;
 	private FreizeitbaederModel() {
 		
 	}
@@ -32,8 +36,7 @@ public class FreizeitbaederModel extends ConcreteObservable {
 		return freizeitbaederModel;
 	}
 	
-	
-	
+
 	public void schreibeFreizeitbaederInTxtDatei() throws IOException {
 
 		WriterCreator writerCreator = new ConcreteTxtCreator();
@@ -59,8 +62,26 @@ public class FreizeitbaederModel extends ConcreteObservable {
 	public void setFreizeitbad(Freizeitbad freizeitbad) {
 		this.freizeitbad = freizeitbad;
 		this.notifyObservers();
-
 	}
+	@Override
+	public void addObserver(Observer obs) {
+		// TODO Auto-generated method stub
+		this.observers.addElement(obs);
+	}
+	@Override
+	public void removeObserver(Observer obs) {
+		// TODO Auto-generated method stub
+		this.observers.removeElement(obs);
+	}
+	@Override
+	public void notifyObservers() {
+		// TODO Auto-generated method stub
+		for(Observer obs: observers) {
+			obs.update();
+		}
+		
+	}
+
 
 }
 
