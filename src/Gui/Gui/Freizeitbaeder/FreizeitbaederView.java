@@ -154,7 +154,7 @@ public class FreizeitbaederView {
                 	
                 	fbModel.setFreizeitbad(new Freizeitbad (txtName.getText(), txtGeoeffnetVon.getText(), txtGeoeffnetBis.getText(),
                                         txtBeckenlaenge.getText(), txtWassTemperatur.getText()));
-                        zeigeInformationsfensterAn("Das Freizeitbad wurde aufgenommen!");
+                       // zeigeInformationsfensterAn("Das Freizeitbad wurde aufgenommen!");
                 } 
                 	catch (PlausiException exc) {
                         zeigeFehlermeldungsfensterAn(exc.getPlausiTyp() + "er ", exc.getMessage());
