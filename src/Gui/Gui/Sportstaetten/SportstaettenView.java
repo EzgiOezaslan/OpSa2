@@ -40,7 +40,7 @@ public class SportstaettenView {
 	private void initKomponenten() {
 		// Labels
 		
-		Font font = new Font("Arial", 18);
+		Font font = new Font("Arial", 20);
 		lblAnzeige.setLayoutX(310);
 		lblAnzeige.setLayoutY(40);
 		lblAnzeige.setFont(font);
