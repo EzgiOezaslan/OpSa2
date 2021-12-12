@@ -18,7 +18,6 @@ public class ConcreteTxtProduct extends WriterProduct{
             e.printStackTrace();
         }
     }
-
     public void fuegeInDateiHinzu(Freizeitbad freizeitbad) throws IOException {
       
         aus.write( "Daten des Freizeitbades\n");

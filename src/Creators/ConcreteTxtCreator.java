@@ -9,6 +9,5 @@ public class ConcreteTxtCreator extends WriterCreator{
 //factory
 	public WriterProduct factoryMethod(String t) throws IOException{
 		return new ConcreteTxtProduct();
-
 	}
 }

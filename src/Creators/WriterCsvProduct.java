@@ -23,6 +23,7 @@ public class WriterCsvProduct extends WriterProduct{
 
 	}
 
+
 	public void schliesseDatei() throws IOException {
 	    aus.close();
 	}

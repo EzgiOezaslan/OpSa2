@@ -69,6 +69,7 @@ public class SportstaettenView {
 				zeigeFreizeitbaederAn();
 			}
 		});
+		
 	}
 
 	void zeigeFreizeitbaederAn() {

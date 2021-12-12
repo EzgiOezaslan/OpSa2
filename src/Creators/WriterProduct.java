@@ -10,6 +10,7 @@ public abstract class WriterProduct {
 	}
 	
 	public void schliesseDatei() throws IOException {
+	
 	}
 
 	

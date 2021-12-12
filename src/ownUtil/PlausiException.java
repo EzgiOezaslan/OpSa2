@@ -15,7 +15,6 @@ public class PlausiException extends Exception {
 		this.feldname = feldname;
 	}
 	
-	
 	public String getPlausiTyp() {
 		return this.plausiTyp;
 	}

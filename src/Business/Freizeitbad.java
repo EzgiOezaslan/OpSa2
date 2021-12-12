@@ -4,7 +4,7 @@ import ownUtil.PlausiException;
 
 public class Freizeitbad {
 	
-	
+
 	// Name des Freizeitbads
     private String name;
     // Oeffnungszeiten

@@ -18,6 +18,7 @@ public class FreizeitbaederControl implements Observer{
 		this.fbView = new FreizeitbaederView(primaryStage, fbModel, this);
 	
 	fbModel.addObserver(this);
+	
 	}
 	
 	

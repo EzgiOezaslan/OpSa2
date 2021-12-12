@@ -182,7 +182,7 @@ public class FreizeitbaederView {
             } else {
                     zeigeInformationsfensterAn("Bisher wurde kein Freizeitbad aufgenommen!");
             }
-    }
+         }
 
          public Freizeitbad freizeitbad() {
         	 return this.freizeitbad();
