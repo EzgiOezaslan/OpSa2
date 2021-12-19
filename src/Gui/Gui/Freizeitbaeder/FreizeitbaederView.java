@@ -123,7 +123,7 @@ public class FreizeitbaederView {
         }
 
         private void initListener() {
-                btnEingabe.setOnAction(new EventHandler<ActionEvent>() {
+        /*        btnEingabe.setOnAction(new EventHandler<ActionEvent>() {
 
                         public void handle(ActionEvent e) {
                                 nehmeFreizeitbadAuf();
@@ -145,6 +145,21 @@ public class FreizeitbaederView {
                                 schreibeFreizeitbaederInDatei("txt");
                         }
                 });
+                */
+        	
+        	btnEingabe.setOnAction(
+    				e->nehmeFreizeitbadAuf()
+    		);
+    		btnAnzeige.setOnAction(
+    				e->zeigeFreizeitbaederAn()
+    		);
+    		mnItmCsvExport.setOnAction(
+    				e->schreibeFreizeitbaederInDatei("csv")
+    		);
+    		mnItmTxtExport.setOnAction(
+    				e-> schreibeFreizeitbaederInDatei("txt")
+    		);
+        	
         }
         
         
@@ -152,7 +167,7 @@ public class FreizeitbaederView {
         private void nehmeFreizeitbadAuf() {
                 try {
                 	
-                	fbModel.setFreizeitbad(new Freizeitbad (txtName.getText(), txtGeoeffnetVon.getText(), txtGeoeffnetBis.getText(),
+                	fbModel.addFreizeitbad(new Freizeitbad (txtName.getText(), txtGeoeffnetVon.getText(), txtGeoeffnetBis.getText(),
                                         txtBeckenlaenge.getText(), txtWassTemperatur.getText()));
                        // zeigeInformationsfensterAn("Das Freizeitbad wurde aufgenommen!");
                 } 
@@ -177,11 +192,23 @@ public class FreizeitbaederView {
         }
 //////////////////////////////////////////////////////////   
          void zeigeFreizeitbaederAn() {
-            if (fbModel.getFreizeitbad() != null) {// GET METHODE
+           /* if (fbModel.getFreizeitbad() != null) {// GET METHODE
                     txtAnzeige.setText(fbModel.getFreizeitbad().gibFreizeitbadZurueck(' '));
             } else {
                     zeigeInformationsfensterAn("Bisher wurde kein Freizeitbad aufgenommen!");
-            }
+            }*/
+        	 
+        	 if (fbModel.getFreizeitbad().size() > 0) {
+     			StringBuffer text = new StringBuffer();
+     			// Ergaenzen: for each – Schleife ueber ArrayList
+     			for(Freizeitbad fzb : this.fbModel.getFreizeitbad())
+     			{
+     				text.append(fzb.gibFreizeitbadZurueck(' ') + "\n");
+     			}
+     			this.txtAnzeige.setText(text.toString());
+     		} else {
+     			zeigeInformationsfensterAn("Bisher wurde kein Freizeitbad aufgenommen!");
+     		}
          }
 
          public Freizeitbad freizeitbad() {

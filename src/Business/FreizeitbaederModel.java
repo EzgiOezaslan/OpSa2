@@ -2,6 +2,7 @@ package Business;
 
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Vector;
 import Creators.ConcreteTxtCreator;
 import Creators.WriterCreator;
@@ -12,8 +13,9 @@ import Pattern.Observable;
 
 public class FreizeitbaederModel implements Observable {
 	
-	private Freizeitbad freizeitbad;
+	//private Freizeitbad freizeitbad;
 	private Vector <Observer> observers = new Vector <Observer>();
+	private ArrayList <Freizeitbad> freizeitbad = new ArrayList<>(); 
 
 	/*
 	 * public void schreibeFreizeitbaederInCsvDatei(FreizeitbaederView fbView)
@@ -41,7 +43,10 @@ public class FreizeitbaederModel implements Observable {
 		WriterCreator writerCreator = new ConcreteTxtCreator();
 		WriterProduct writerProduct = writerCreator.factoryMethod(null);
 		
-		writerProduct.fuegeInDateiHinzu(this.freizeitbad);
+		for( Freizeitbad fb: freizeitbad) {
+			writerProduct.fuegeInDateiHinzu(fb);
+		}
+		
 		writerProduct.schliesseDatei();
 
 	}
@@ -49,22 +54,25 @@ public class FreizeitbaederModel implements Observable {
 	public void schreibeFreizeitbaederInCsvDatei() throws IOException{
 		WriterCreator writerCreator = new WriterCsvCreator();
 		WriterProduct writerProduct = writerCreator.factoryMethod(null);
-		writerProduct.fuegeInDateiHinzu(this.freizeitbad);
+		
+		for( Freizeitbad fb: freizeitbad) {
+			writerProduct.fuegeInDateiHinzu(fb);
+		}
+		
 		writerProduct.schliesseDatei();
 
 	}
 
-	public Freizeitbad getFreizeitbad() {
+	public ArrayList <Freizeitbad> getFreizeitbad() {
 		return this.freizeitbad;
 	}
 
-	public void setFreizeitbad(Freizeitbad freizeitbad) {
-		this.freizeitbad = freizeitbad;
+	public void addFreizeitbad(Freizeitbad freizeitbad) {
+		this.freizeitbad.add(freizeitbad);
 		this.notifyObservers();
 	}
-	@Override
+	
 	public void addObserver(Observer obs) {
-		// TODO Auto-generated method stub
 		this.observers.addElement(obs);
 	}
 	@Override

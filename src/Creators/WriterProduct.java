@@ -6,12 +6,10 @@ import Business.Freizeitbad;
 
 public abstract class WriterProduct {
 	
-	public void fuegeInDateiHinzu(Freizeitbad freizeitbad) throws IOException {
-	}
+	public abstract void fuegeInDateiHinzu(Freizeitbad freizeitbad) throws IOException;
 	
-	public void schliesseDatei() throws IOException {
 	
-	}
+	public abstract void schliesseDatei() throws IOException;
 
 	
 }
