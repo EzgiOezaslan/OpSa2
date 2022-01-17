@@ -17,6 +17,8 @@ public class Main extends Application {
 		new SportstaettenControl(fensterSportstaetten);
 	}
 	
+	
+	
 	public static void main(String[] args){
 		launch(args);
 		

@@ -1,6 +1,9 @@
 package Gui.Gui.Sportstaetten;
 
-import Business.*;
+import java.io.IOException;
+import Business.businessFreizeitbad.Freizeitbad;
+import Business.businessFreizeitbad.FreizeitbaederModel;
+import Business.businessSporthalle.SporthallenModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -15,96 +18,158 @@ import ownUtil.MeldungsfensterAnzeiger;
 
 public class SportstaettenView {
 
-	//private SportstaettenControl sportstaettenControl;
-	private FreizeitbaederModel freizeitbaederModel;
+	private SportstaettenControl sportstaettenControl;
+	private FreizeitbaederModel fbModel;
+	private SporthallenModel sporthallenModel;
 
 	private Pane pane = new Pane();
-	private Label lblAnzeige = new Label("Anzeige Freizeitbaeder");
-	private TextArea txtAnzeige = new TextArea();
-	private Button btnAnzeige = new Button("Anzeige");
-	
 
-	public SportstaettenView(SportstaettenControl sportstaettenControl,FreizeitbaederModel freizeitbaederModel, Stage primaryStage) {
+	private Label lblAnzeigeFr = new Label("Anzeige Freizeitb√§der");
+	private Label lblAnzeigeSp = new Label("Anzeige Sporthallen");
+
+	private TextArea txtAnzeigeFr = new TextArea();
+	private TextArea txtAnzeigeSp = new TextArea();
+
+	private Button btnAnzeigeFr = new Button("Anzeige");
+	private Button btnAnzeigeSp = new Button("Anzeige");
+
+////
+	public SportstaettenView(SportstaettenControl sportstaettenControl, FreizeitbaederModel freizeitbaederModel,
+			Stage primaryStage, SporthallenModel sporthallenModel) {
 		Scene scene = new Scene(this.pane, 560, 340);
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("Anzeige von Sportst‰tten");
+		primaryStage.setTitle("Anzeige von Sportst√§tten");
 		primaryStage.show();
-		
-		//this.sportstaettenControl= sportstaettenControl;
-		this.freizeitbaederModel=freizeitbaederModel;
-		
-		this.initKomponenten();
-		this.initListener();
+
+		this.fbModel = freizeitbaederModel;
+		this.sporthallenModel = sporthallenModel;
+		this.sportstaettenControl = sportstaettenControl;
+
+		this.initKomponentenSporthallen();
+		this.initKomponentenFreizeitbaeder();
+		this.initListenerFreizeitbaeder();
+		this.initListenerSporthallen();
+		//this.initListener();
+
 	}
 
-	private void initKomponenten() {
-		// Labels
-		
+	private void initKomponentenSporthallen() {
 		Font font = new Font("Arial", 20);
-		lblAnzeige.setLayoutX(310);
-		lblAnzeige.setLayoutY(40);
-		lblAnzeige.setFont(font);
-		lblAnzeige.setStyle("-fx-font-weight: bold;");
-		pane.getChildren().addAll(lblAnzeige);
+		lblAnzeigeSp.setLayoutX(20);
+		lblAnzeigeSp.setLayoutY(40);
+		lblAnzeigeSp.setFont(font);
+		lblAnzeigeSp.setStyle("-fx-font-weight: bold;");
+		pane.getChildren().add(lblAnzeigeSp);
+
+		txtAnzeigeSp.setEditable(false);
+		txtAnzeigeSp.setLayoutX(20);
+		txtAnzeigeSp.setLayoutY(90);
+		txtAnzeigeSp.setPrefWidth(220);
+		txtAnzeigeSp.setPrefHeight(185);
+		pane.getChildren().add(txtAnzeigeSp);
+
+		btnAnzeigeSp.setLayoutX(20);
+		btnAnzeigeSp.setLayoutY(290);
+		pane.getChildren().add(btnAnzeigeSp);
+	}
+
+	private void initKomponentenFreizeitbaeder() {
+		// Label
+		Font font = new Font("Arial", 20);
+		lblAnzeigeFr.setLayoutX(310);
+		lblAnzeigeFr.setLayoutY(40);
+		lblAnzeigeFr.setFont(font);
+		lblAnzeigeFr.setStyle("-fx-font-weight: bold;");
+		pane.getChildren().add(lblAnzeigeFr);
 
 		// Textbereich
-		txtAnzeige.setEditable(false);
-		txtAnzeige.setLayoutX(310);
-		txtAnzeige.setLayoutY(90);
-		txtAnzeige.setPrefWidth(220);
-		txtAnzeige.setPrefHeight(185);
-		pane.getChildren().add(txtAnzeige);
+		txtAnzeigeFr.setEditable(false);
+		txtAnzeigeFr.setLayoutX(310);
+		txtAnzeigeFr.setLayoutY(90);
+		txtAnzeigeFr.setPrefWidth(220);
+		txtAnzeigeFr.setPrefHeight(185);
+		pane.getChildren().add(txtAnzeigeFr);
 
-		// Buttons
-		btnAnzeige.setLayoutX(310);
-		btnAnzeige.setLayoutY(290);
-		pane.getChildren().addAll(btnAnzeige);
-
+		// Button
+		btnAnzeigeFr.setLayoutX(310);
+		btnAnzeigeFr.setLayoutY(290);
+		btnAnzeigeSp.setLayoutX(20);
+		btnAnzeigeSp.setLayoutY(290);
+		pane.getChildren().add(btnAnzeigeFr);
 	}
 
-	private void initListener() {
-		/*btnAnzeige.setOnAction(new EventHandler<ActionEvent>() {
+	/*
+	 * private void initListener() { /* btnAnzeige.setOnAction(new
+	 * EventHandler<ActionEvent>() {
+	 * 
+	 * @Override public void handle(ActionEvent e) { zeigeFreizeitbaederAn(); } });
+	 * 
+	 * 
+	 * btnAnzeigeFr.setOnAction(e -> zeigeFreizeitbaederAn());
+	 * 
+	 * btnAnzeigeSp.setOnAction(e -> { zeigeSporthallenAn(); });
+	 * 
+	 * }
+	 */
+
+	private void initListenerFreizeitbaeder() {
+		btnAnzeigeFr.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
 				zeigeFreizeitbaederAn();
 			}
 		});
-		*/
-		
-		btnAnzeige.setOnAction(
-				e->zeigeFreizeitbaederAn()
-		);
 	}
 
-	void zeigeFreizeitbaederAn() {
-		/*if (this.freizeitbaederModel.getFreizeitbad() != null) {
-			txtAnzeige.setText(this.freizeitbaederModel.getFreizeitbad().gibFreizeitbadZurueck(' '));
+	private void initListenerSporthallen() {
+		btnAnzeigeSp.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				zeigeSporthallenAn();
+			}
+		});
+	}
+
+	public void zeigeFreizeitbaederAn() {
+
+		if (fbModel.getFreizeitbad() != null) {
+			StringBuffer text = new StringBuffer();
+			for (Freizeitbad fzb : fbModel.freizeitbad)
+
+				text.append(fzb.gibFreizeitbadZurueck(' ') + "\n");
+
+			this.txtAnzeigeFr.setText(text.toString());
 		} else {
 			zeigeInformationsfensterAn("Bisher wurde kein Freizeitbad aufgenommen!");
 		}
-	}*/
-		
-		 if (freizeitbaederModel.getFreizeitbad().size() > 0) {
-  			StringBuffer text = new StringBuffer();
-  			// Ergaenzen: for each ñ Schleife ueber ArrayList
-  			for(Freizeitbad fzb : this.freizeitbaederModel.getFreizeitbad())
-  			{
-  				text.append(fzb.gibFreizeitbadZurueck(' ') + "\n");
-  			}
-  			this.txtAnzeige.setText(text.toString());
-  		} else {
-  			zeigeInformationsfensterAn("Bisher wurde kein Freizeitbad aufgenommen!");
-  		}
-      }
+
+	}
+
+	public void zeigeSporthallenAn() {
+	
+		try {
+			sporthallenModel.setSporthalle(sporthallenModel.leseSporthallenAusCsvDatei());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		if (sporthallenModel.getSporthalle() != null) {
+			txtAnzeigeSp.setText(sporthallenModel.getSporthalle().gibSporthalleZurueck(' '));
+		} else {
+			zeigeInformationsfensterAn("Bisher wurde keine Sporthalle aufgenommen!");
+		}
+	}
 
 	void zeigeInformationsfensterAn(String meldung) {
 		new MeldungsfensterAnzeiger(AlertType.INFORMATION, "Information", meldung).zeigeMeldungsfensterAn();
 	}
 
-	void zeigeFehlermeldungsfensterAn(String fehlertyp, String meldung) {
-		new MeldungsfensterAnzeiger(AlertType.ERROR, fehlertyp + "Fehler", meldung).zeigeMeldungsfensterAn();
+	void zeigeFehlermeldungAn(String fehlertyp) {
+		new MeldungsfensterAnzeiger(AlertType.ERROR, fehlertyp + "Fehler", fehlertyp).zeigeMeldungsfensterAn();
 	}
-	
-	
 
 }

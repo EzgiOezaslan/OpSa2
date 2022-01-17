@@ -1,4 +1,4 @@
-package Business;
+package Business.businessFreizeitbad;
 
 
 import java.io.*;
@@ -15,7 +15,9 @@ public class FreizeitbaederModel implements Observable {
 	
 	//private Freizeitbad freizeitbad;
 	private Vector <Observer> observers = new Vector <Observer>();
-	private ArrayList <Freizeitbad> freizeitbad = new ArrayList<>(); 
+	public ArrayList <Freizeitbad> freizeitbad = new ArrayList<>(); 
+	//private static FreizeitbaederModel fbModel;
+	
 
 	/*
 	 * public void schreibeFreizeitbaederInCsvDatei(FreizeitbaederView fbView)
@@ -30,6 +32,7 @@ public class FreizeitbaederModel implements Observable {
 	private FreizeitbaederModel() {
 		
 	}
+	
 	public static FreizeitbaederModel getInstance() {
 		if(freizeitbaederModel == null)
 			freizeitbaederModel= new FreizeitbaederModel();
@@ -37,6 +40,10 @@ public class FreizeitbaederModel implements Observable {
 		return freizeitbaederModel;
 	}
 	
+	public String getUeberschrift()
+	{
+		 return "Verwaltung von Freizeitbädern";
+	} 
 
 	public void schreibeFreizeitbaederInTxtDatei() throws IOException {
 
@@ -91,4 +98,3 @@ public class FreizeitbaederModel implements Observable {
 
 
 }
-

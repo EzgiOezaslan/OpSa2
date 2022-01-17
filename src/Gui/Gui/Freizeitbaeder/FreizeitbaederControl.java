@@ -3,7 +3,8 @@ package Gui.Gui.Freizeitbaeder;
 import Pattern.*;
 
 import java.io.IOException;
-import Business.FreizeitbaederModel;
+
+import Business.businessFreizeitbad.FreizeitbaederModel;
 import javafx.stage.Stage;
 
 public class FreizeitbaederControl implements Observer{

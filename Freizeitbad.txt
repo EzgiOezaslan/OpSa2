@@ -94,3 +94,9 @@ Oeffnungszeit des Freizeitbads:		7.0 - 18.0
 Beckenlaenge des Freizeitbads:		22
 Wassertemperatur des Freizeitbads:	23
 
+Daten des Freizeitbades
+Name des Freitzeitbads:				Hallo
+Oeffnungszeit des Freizeitbads:		9.0 - 19.0
+Beckenlaenge des Freizeitbads:		25
+Wassertemperatur des Freizeitbads:	27
+

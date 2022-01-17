@@ -1,9 +1,7 @@
 package Gui.Gui.Freizeitbaeder;
 
-import Business.Freizeitbad;
-
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import Business.businessFreizeitbad.Freizeitbad;
+import Business.businessFreizeitbad.FreizeitbaederModel;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -19,7 +17,6 @@ import javafx.stage.Stage;
 
 import ownUtil.MeldungsfensterAnzeiger;
 import ownUtil.PlausiException;
-import Business.FreizeitbaederModel;
 
 public class FreizeitbaederView {
 

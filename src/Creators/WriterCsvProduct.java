@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import Business.Freizeitbad;
+import Business.businessFreizeitbad.Freizeitbad;
 
 public class WriterCsvProduct extends WriterProduct{
 		
@@ -17,8 +17,8 @@ public class WriterCsvProduct extends WriterProduct{
 			aus= new BufferedWriter(new FileWriter("Freizeitbad.csv"));
 		}
 
-	public void fuegeInDateiHinzu(Freizeitbad freizeitbad) throws IOException {		
-		aus.write(((Freizeitbad) freizeitbad).gibFreizeitbadZurueck(';'));
+	public void fuegeInDateiHinzu(Object object) throws IOException {		
+		aus.write(((Freizeitbad) object).gibFreizeitbadZurueck(';'));
 		aus.write("\n");
 
 	}
