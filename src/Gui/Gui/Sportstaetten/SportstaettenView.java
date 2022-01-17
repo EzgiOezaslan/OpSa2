@@ -31,7 +31,7 @@ public class SportstaettenView {
 	private TextArea txtAnzeigeSp = new TextArea();
 
 	private Button btnAnzeigeFr = new Button("Anzeige");
-	private Button btnAnzeigeSp = new Button("Anzeige");
+	private Button btnAnzeigeSp = new Button("csv-Import und Anzeige");
 
 ////
 	public SportstaettenView(SportstaettenControl sportstaettenControl, FreizeitbaederModel freizeitbaederModel,
